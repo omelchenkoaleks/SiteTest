@@ -6,15 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/outline_home_black_48"
+            android:title="Главная" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_tour_search"
+            android:icon="@drawable/baseline_loop_black_48"
+            android:title="Поиск тура" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_countries"
+            android:icon="@drawable/baseline_emoji_people_black_48"
+            android:title="Страны" />
+        <item
+            android:id="@+id/nav_types_of_rest"
+            android:icon="@drawable/baseline_face_black_48"
+            android:title="Виды отдыха" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/baseline_deck_black_48"
+            android:title="О нас" />
     </group>
 </menu>

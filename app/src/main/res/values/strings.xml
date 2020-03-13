@@ -7,9 +7,19 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tour_search">Поиск тура</string>
+    <string name="menu_countries">Страны</string>
+    <string name="menu_types_of_rest">Виды отдыха</string>
+    <string name="menu_about_us">О нас</string>
 
-    <string name="home_second">Home Second</string>
+    <string name="check_connection_text_view">Интернет-соединение отстуствует!</string>
+
+
+    /*----------------------------    links    ----------------------------------*/
+    <string name="website_main">http://bestturizm.com.ua/</string>
+    <string name="website_tour_search">http://bestturizm.com.ua/poisk-tura</string>
+    <string name="website_countries">http://bestturizm.com.ua/turizm/category/countries</string>
+    <string name="website_types_of_rest">http://bestturizm.com.ua/turizm/category</string>
+    <string name="website_about_us">http://bestturizm.com.ua/o-nas</string>
+
 </resources>
