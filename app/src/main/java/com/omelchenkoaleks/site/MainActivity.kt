@@ -8,24 +8,30 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var mWebView: WebView
+    lateinit var mDrawerLayout: DrawerLayout
+    lateinit var mNavigationView: NavigationView
     // хранит состояние доступа к Интернету
     var networkAvailable = false
 
@@ -36,6 +42,22 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         var url = getString(R.string.website_main)
+        // TODO: пока здесь ссылка на поиск тура - должна быть форма обратной связи
+        var urlFeedback = getString(R.string.website_tour_search)
+
+        mDrawerLayout = findViewById(R.id.drawer_layout)
+        mNavigationView = findViewById(R.id.nav_view)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            mDrawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        mDrawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        mNavigationView.setNavigationItemSelectedListener(this)
 
         mWebView = findViewById(R.id.web_view)
         val webSettings = mWebView.settings
@@ -55,14 +77,37 @@ class MainActivity : AppCompatActivity() {
             setOnChildScrollUpCallback { parent, child -> mWebView.scrollY > 0 }
         }
 
-
         val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener {
+            loadWebSite(mWebView, urlFeedback, applicationContext)
         }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_home -> {
+                val url = getString(R.string.website_main)
+                loadWebSite(mWebView, url, applicationContext)
+            }
+            R.id.nav_tour_search -> {
+                val url = getString(R.string.website_tour_search)
+                loadWebSite(mWebView, url, applicationContext)
+            }
+            R.id.nav_countries -> {
+                val url = getString(R.string.website_countries)
+                loadWebSite(mWebView, url, applicationContext)
+            }
+            R.id.nav_types_of_rest -> {
+                val url = getString(R.string.website_types_of_rest)
+                loadWebSite(mWebView, url, applicationContext)
+            }
+            R.id.nav_about_us -> {
+                val url = getString(R.string.website_about_us)
+                loadWebSite(mWebView, url, applicationContext)
+            }
+        }
+        mDrawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 
 

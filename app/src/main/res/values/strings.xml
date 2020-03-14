@@ -22,4 +22,11 @@
     <string name="website_types_of_rest">http://bestturizm.com.ua/turizm/category</string>
     <string name="website_about_us">http://bestturizm.com.ua/o-nas</string>
 
+    /*----------------------------    NavigationDrawer    ----------------------------------*/
+    <string name="nav_main">Главная</string>
+    <string name="nav_tour_search">Поиск тура</string>
+    <string name="nav_countries">Страны</string>
+    <string name="nav_types_of_rest">Виды отдыха</string>
+    <string name="nav_about_us">О нас</string>
+
 </resources>
